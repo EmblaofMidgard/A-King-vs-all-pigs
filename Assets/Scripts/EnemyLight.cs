@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class EnemyLight : MonoBehaviour
 {
-    public Transform light;
+    public Transform lightOfTheEnemy;
     public float lightOnDelay;
 
 
@@ -19,13 +19,13 @@ public class EnemyLight : MonoBehaviour
 
     public void SpegniTorcia()
     {
-        light.gameObject.SetActive(false);
+        lightOfTheEnemy.gameObject.SetActive(false);
         luce = false;
     }
 
     public void AccendiTorcia()
     {
-        light.gameObject.SetActive(true);
+        lightOfTheEnemy.gameObject.SetActive(true);
         luce = true;
     }
 
@@ -33,7 +33,7 @@ public class EnemyLight : MonoBehaviour
     {
         animator = GetComponent<Animator>();
 
-        if (!light.gameObject.activeSelf)
+        if (!lightOfTheEnemy.gameObject.activeSelf)
             time = lightOnDelay;
     }
 
