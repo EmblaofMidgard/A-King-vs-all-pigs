@@ -994,6 +994,10 @@ PrefabInstance:
       propertyPath: light
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3762070776936513207, guid: 088d8421579607042b0ef932b26bfa16, type: 3}
+      propertyPath: lightOfTheEnemy
+      value: 
+      objectReference: {fileID: 243350044}
     - target: {fileID: 6149838517774607396, guid: 088d8421579607042b0ef932b26bfa16, type: 3}
       propertyPath: m_RootOrder
       value: 6
