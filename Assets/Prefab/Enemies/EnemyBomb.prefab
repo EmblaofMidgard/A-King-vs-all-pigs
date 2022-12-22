@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 290f7fb6da049854c94238b0d8402528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  light: {fileID: 0}
+  lightOfTheEnemy: {fileID: 0}
   lightOnDelay: 0
 --- !u!50 &5399913967224905470
 Rigidbody2D:
@@ -100,13 +100,13 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &5879975705254604678
 BoxCollider2D:
   m_ObjectHideFlags: 0
