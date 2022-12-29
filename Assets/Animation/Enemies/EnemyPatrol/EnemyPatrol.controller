@@ -84,9 +84,15 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyCannon
+  m_Name: EnemyPatrol
   serializedVersion: 5
-  m_AnimatorParameters: []
+  m_AnimatorParameters:
+  - m_Name: luce
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -140,10 +146,10 @@ AnimatorStateMachine:
     m_Position: {x: 290, y: 20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4814664193642437034}
-    m_Position: {x: 280, y: 80, z: 0}
+    m_Position: {x: 480, y: 80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3252506809249085166}
-    m_Position: {x: 280, y: 150, z: 0}
+    m_Position: {x: 300, y: 170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 506633718672656361}
     m_Position: {x: 30, y: 200, z: 0}
