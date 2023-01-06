@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8677974180780547782}
   - component: {fileID: 554570608037492966}
   m_Layer: 6
-  m_Name: EnemyPatrol
+  m_Name: EnemyCannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
