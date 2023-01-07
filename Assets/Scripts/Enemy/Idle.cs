@@ -9,33 +9,23 @@ public partial class Enemy
             this.owner = owner;
         }
 
-        bool tempo;
-
-        float time;
-
         public override void Enter()
         {
-            tempo = false;
-            time = 10;
+            Debug.Log($"{owner.gameObject.name} is Idle");
         }
         public override void Execute()
         {
-            Debug.Log($"idle{time} ");
-            //codice dello stato
-            if (time < 0)
-            {
-                tempo = true;
-                
-            }
-            else
-                time -= Time.deltaTime;
-
-
-            //se condizione di passsaggio in stato chase
-            if (tempo)
-                owner.machine.SetState(new Chase(owner));
-
+            if (owner.playerPresence == true)
+                owner.machine.SetState(new Idle(owner));//da modificare
 
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<CharacterControllerPlatformer2D>() == true)
+            playerPresence = true;
+    }
+
+
 }
