@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Rendering.Universal;
 
 [RequireComponent(typeof(Animator))]
 public class EnemyLight : MonoBehaviour
@@ -9,39 +9,42 @@ public class EnemyLight : MonoBehaviour
     public Transform lightOfTheEnemy;
     public float lightOnDelay;
 
-
     Animator animator;
 
     float time;
 
-    bool luce;
-
+    public bool lightOn {private set; get;}
 
     public void SpegniTorcia()
     {
         lightOfTheEnemy.gameObject.SetActive(false);
-        luce = false;
+        lightOn = false;
     }
 
     public void AccendiTorcia()
     {
         lightOfTheEnemy.gameObject.SetActive(true);
-        luce = true;
+        lightOn = true;
     }
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        SetTriggerRadius();
 
         if (!lightOfTheEnemy.gameObject.activeSelf)
             time = lightOnDelay;
     }
 
+    private void SetTriggerRadius()
+    {
+        GetComponent<CircleCollider2D>().radius = GetComponentInChildren<Light2D>().pointLightOuterRadius;
+    }
 
     private void Update()
     {
 
-        if (!luce)
+        if (!lightOn)
             time = lightOnDelay;
 
 
@@ -50,12 +53,24 @@ public class EnemyLight : MonoBehaviour
             time -= Time.deltaTime;
 
             if (time <= 0)
-                luce = true;
+                lightOn = true;
         }
 
-
-
-        animator.SetBool("luce", luce);
+        animator.SetBool("luce", lightOn);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<CharacterControllerPlatformer2D>() == true)
+            collision.GetComponent<CharacterControllerPlatformer2D>().SetIsInLight(true);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<CharacterControllerPlatformer2D>() == true)
+            collision.GetComponent<CharacterControllerPlatformer2D>().SetIsInLight(false);
+
+    }
+
 
 }
