@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,14 +25,12 @@ public class CharacterControllerPlatformer2D : MonoBehaviour
     float horizontalInput;
     float horizontalMove;
 
-
     bool jumpAbort;
-
+    public bool isInLight {get; private set;}
 
     bool isGrounded;
     [SerializeField] Transform groundCheck;
     public LayerMask groundMask;
-
 
     Animator animator;
 
@@ -41,9 +40,6 @@ public class CharacterControllerPlatformer2D : MonoBehaviour
         state = PlayerState.Grounded;
         animator = GetComponent<Animator>();
     }
-
-
-
 
     private void Update()
     {
@@ -154,5 +150,11 @@ public class CharacterControllerPlatformer2D : MonoBehaviour
             jumpAbort = false;
         }
     }
+
+    internal void SetIsInLight(bool v)
+    {
+        throw new NotImplementedException();
+    }
+
 
 }
