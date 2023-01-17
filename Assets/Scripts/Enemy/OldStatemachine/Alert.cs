@@ -21,8 +21,8 @@ public partial class Enemy
                 owner.machine.SetState(new StartAttack(owner));
             else if(owner.playerPresence == false)
                 owner.machine.SetState(new NotAlert(owner));
-            else
-                owner.behaviour.EnemyAlert();
+            //else
+            //    owner.behaviour.EnemyAlert();
         }
 
         public override void Exit()

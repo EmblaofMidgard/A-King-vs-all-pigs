@@ -18,18 +18,18 @@ public partial class Enemy
 
         public override void Execute()
         {
-            if (owner.PlayerIsClose())
-            {
-                owner.behaviour.EnemyCloseAttack();
-            }
-            else if (owner.PlayerIsFar())
-            {
-                owner.behaviour.EnemyFarAttack();
-            }
-            else
-            {
-                owner.machine.SetState(new EndAttack(owner));
-            }
+            //if (owner.PlayerIsClose())
+            //{
+            //    owner.behaviour.EnemyCloseAttack();
+            //}
+            //else if (owner.PlayerIsFar())
+            //{
+            //    owner.behaviour.EnemyFarAttack();
+            //}
+            //else
+            //{
+            //    owner.machine.SetState(new EndAttack(owner));
+            //}
         }
 
         public override void Exit()
