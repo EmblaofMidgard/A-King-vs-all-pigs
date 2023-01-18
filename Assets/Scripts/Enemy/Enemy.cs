@@ -9,82 +9,101 @@ public partial class Enemy : MonoBehaviour
     public Transform target;
 
     public float speed = 10;
-    public float playerFarMaxDistance;
-    public float playerCloseMaxDistance;
+    public float enemyDetectionRange = 1f; //forse non serve
+    public float enemyMeleeRange = 1f;
 
-    float playerDistance;
+    public bool playerPresence { get; private set; }
+    public bool playerSpotted => player.isInLight && playerPresence;
+    public bool playerIsInMeleeRange;
 
-    bool playerPresence;
-    bool playerSpotted => enemyLight.lightOn;
-
-    public EnemyBehaviour behaviour;
+    public EnemySimpleBehaviour behaviour;
     public EnemyLight enemyLight;
+    public EnemyEye enemyEye;
     public Animator animator;
+    CharacterControllerPlatformer2D player;
     Vector3 startingPoint;
     public float reachPoint = 0.5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        machine = new StateMachine<Enemy>(new NotAlert(this));
-        playerPresence = false;
+        machine = new StateMachine<Enemy>(new Idle(this));
         startingPoint = transform.position;
         animator = GetComponent<Animator>();
+        enemyLight = GetComponent<EnemyLight>();
+        behaviour = GetComponent<EnemySimpleBehaviour>();
+        enemyEye = GetComponentInChildren<EnemyEye>();
+        player = target.gameObject.GetComponent<CharacterControllerPlatformer2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
         machine.StateUpdate();
+        SetPlayerIsInRange();
     }
 
-    public float GetPlayerDistance()
+    private void SetPlayerIsInRange()
     {
-        UpdatePlayerDistance();
-        float distance = playerDistance;
-        return distance;
+        if (playerSpotted)
+        {
+            if (Vector2.Distance(target.position, transform.position) < enemyMeleeRange)
+                playerIsInMeleeRange = true;
+            else
+                playerIsInMeleeRange = false;
+        }
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, playerCloseMaxDistance);
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, playerFarMaxDistance);
+        Gizmos.DrawWireSphere(transform.position, enemyDetectionRange);
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireSphere(transform.position, enemyMeleeRange);
     }
     
-    public bool PlayerIsClose()
+    internal void SetPlayerPresence(bool v)
     {
-        UpdatePlayerDistance();
-        Debug.Log($"{ playerDistance} close");
-        return playerDistance < playerCloseMaxDistance;
+        playerPresence = v;
     }
 
-    public bool PlayerIsFar()
-    {
-        UpdatePlayerDistance();
-        Debug.Log($"{ playerDistance} far");
-        return playerDistance < playerFarMaxDistance;
-    }
+    
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.GetComponent<CharacterControllerPlatformer2D>() == true)
-        {
-            playerPresence = true;
-        }
-    }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.GetComponent<CharacterControllerPlatformer2D>() == true)
-            playerPresence = false;
-    }
+    //===OLD======================================
+    //public float playerFarMaxDistance;
+    //public float playerCloseMaxDistance;
 
-    void UpdatePlayerDistance()
-    {
-        playerDistance = Vector2.Distance(transform.position, target.position);
-        Debug.Log($"{ playerDistance} calculate");
-    }
+    //float playerDistance;
+
+    //public bool PlayerIsClose()
+    //{
+    //    UpdatePlayerDistance();
+    //    Debug.Log($"{ playerDistance} close");
+    //    return playerDistance < playerCloseMaxDistance;
+    //}
+
+    //public bool PlayerIsFar()
+    //{
+    //    UpdatePlayerDistance();
+    //    Debug.Log($"{ playerDistance} far");
+    //    return playerDistance < playerFarMaxDistance;
+    //}
+
+    //public float GetPlayerDistance()
+    //{
+    //    UpdatePlayerDistance();
+    //    float distance = playerDistance;
+    //    return distance;
+    //}
+
+    //void UpdatePlayerDistance()
+    //{
+    //    playerDistance = Vector2.Distance(transform.position, target.position);
+    //    Debug.Log($"{ playerDistance} calculate");
+    //}
 
 }
+
+
+//Idle->Chase->Attack->Idle

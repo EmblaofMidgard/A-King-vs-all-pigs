@@ -14,6 +14,7 @@ public class CharacterControllerPlatformer2D : MonoBehaviour
     public float jumpForce;
     public float jumpAbortForce;
     public float stoppingSpeed;
+    public float overlapRange = 0.3f;
 
     public Interacter interactionPoint;
 
@@ -69,6 +70,7 @@ public class CharacterControllerPlatformer2D : MonoBehaviour
         ResetMotion();
         CheckForGround();
         UpdateHorizontal();
+        
 
         switch (state)
         {
@@ -100,16 +102,14 @@ public class CharacterControllerPlatformer2D : MonoBehaviour
         animator.SetBool("grounded", isGrounded);
     }
 
+
     private void ResetMotion()
     {
         moveVector = body.velocity;
-
     }
 
     private void UpdateHorizontal()
     {
-
-      
         horizontalMove +=horizontalInput * acceleration * Time.fixedDeltaTime;
         if (horizontalInput == 0)
             horizontalMove = Mathf.Lerp(horizontalMove, 0, stoppingSpeed);
@@ -117,13 +117,12 @@ public class CharacterControllerPlatformer2D : MonoBehaviour
 
         horizontalMove = Mathf.Clamp(horizontalMove, -maxSpeed, maxSpeed);
 
-        moveVector.x =  horizontalMove;
-
+        moveVector.x = horizontalMove;
     }
 
     private void CheckForGround()
     {
-        isGrounded= Physics2D.OverlapCircle(groundCheck.position, 0.3f,groundMask);
+        isGrounded= Physics2D.OverlapCircle(groundCheck.position, overlapRange, groundMask);
         
     }
 
@@ -153,8 +152,12 @@ public class CharacterControllerPlatformer2D : MonoBehaviour
 
     internal void SetIsInLight(bool v)
     {
-        throw new NotImplementedException();
+        isInLight = v;
     }
 
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, overlapRange);
+    }
 }

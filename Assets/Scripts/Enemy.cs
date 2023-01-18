@@ -61,14 +61,14 @@ public class EnemyLight : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<CharacterControllerPlatformer2D>() == true)
-            collision.GetComponent<CharacterControllerPlatformer2D>().SetIsInLight(true);
+        if (collision.gameObject.GetComponent<CharacterControllerPlatformer2D>() == true && lightOn)
+            collision.gameObject.GetComponent<CharacterControllerPlatformer2D>().SetIsInLight(true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<CharacterControllerPlatformer2D>() == true)
-            collision.GetComponent<CharacterControllerPlatformer2D>().SetIsInLight(false);
+        if (collision.gameObject.GetComponent<CharacterControllerPlatformer2D>() == true)
+            collision.gameObject.GetComponent<CharacterControllerPlatformer2D>().SetIsInLight(false);
 
     }
 

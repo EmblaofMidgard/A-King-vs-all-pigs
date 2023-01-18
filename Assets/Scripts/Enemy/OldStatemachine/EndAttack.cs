@@ -18,12 +18,13 @@ public partial class Enemy
 
         public override void Execute()
         {
-            if(owner.PlayerIsFar())
-                owner.machine.SetState(new Attack(owner));
-            else if(Vector3.Distance(owner.startingPoint, owner.transform.position)<owner.reachPoint)
-                owner.machine.SetState(new NotAlert(owner));
-            else
-                owner.behaviour.EnemyEndAttack();
+            //if (owner.PlayerIsFar())
+            //    owner.machine.SetState(new Attack(owner));
+            //else if (Vector3.Distance(owner.startingPoint, owner.transform.position) < owner.reachPoint)
+            //    owner.machine.SetState(new NotAlert(owner));
+            //else
+            //owner.behaviour.EnemyEndAttack();
+           
         }
 
         public override void Exit()

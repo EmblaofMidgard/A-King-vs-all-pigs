@@ -22,7 +22,7 @@ public partial class Enemy
         {
             if (!doneFirstAttack)
             {
-                owner.behaviour.EnemyStartAttack();
+                //owner.behaviour.EnemyStartAttack();
                 doneFirstAttack = true;
             }
             else
