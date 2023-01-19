@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 8677974180780547782}
   - component: {fileID: 554570608037492966}
   - component: {fileID: 1977562248216741072}
-  - component: {fileID: 4157380912685385553}
+  - component: {fileID: 2177917674167679232}
   m_Layer: 6
   m_Name: EnemyCannon
   m_TagString: Untagged
@@ -184,16 +184,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f077cca2a8ac9b46a4356192047a56e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 3040020536868773359, guid: f20eb2e77eb75f24180eee4afb6871e3, type: 3}
+  playerTarget: {fileID: 0}
   speed: 10
+  reachPoint: 0.5
+  jumpForce: 5
+  jumpDistance: 1
   enemyDetectionRange: 1
   enemyMeleeRange: 1
-  playerIsInMeleeRange: 0
-  behaviour: {fileID: 0}
   enemyLight: {fileID: 0}
   enemyEye: {fileID: 0}
   animator: {fileID: 0}
-  reachPoint: 0.5
+  agent: {fileID: 0}
+  player: {fileID: 0}
+  patrollingPoints: {fileID: 0}
+  enemyMeleeHitbox: {fileID: 0}
+  actualTarget: {fileID: 0}
 --- !u!114 &8677974180780547782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,22 +256,28 @@ CircleCollider2D:
   m_Offset: {x: 1.25, y: 0}
   serializedVersion: 2
   m_Radius: 1.25
---- !u!114 &4157380912685385553
-MonoBehaviour:
+--- !u!195 &2177917674167679232
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4853499214398799051}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd400aadd4ab43a49873edfb737c88cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  enemyLight: {fileID: 0}
-  agent: {fileID: 0}
-  patrolling: {fileID: 0}
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0.5
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &4982232425095562770
 GameObject:
   m_ObjectHideFlags: 0

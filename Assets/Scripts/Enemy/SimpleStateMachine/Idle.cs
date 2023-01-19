@@ -13,6 +13,8 @@ public partial class Enemy
         {
             Debug.Log($"{owner.gameObject.name} is {nameof(Idle)} at {Time.time}");
             owner.animator.SetBool($"{nameof(Idle)}", true);
+            if(owner.lastTarget != null)
+                owner.actualTarget = owner.lastTarget;
         }
 
         public override void Execute()
@@ -23,14 +25,21 @@ public partial class Enemy
                     owner.machine.SetState(new SimpleAttack(owner));
                 else
                     owner.machine.SetState(new Chase(owner));
-            } 
+            }
             else
-                owner.behaviour.EnemyIdle();
+            {
+                owner.Path();
+                owner.Move();
+                if (!owner.enemyLight.lightOn)
+                    owner.enemyLight.AccendiTorcia();
+            }
+                
         }
 
         public override void Exit()
         {
             owner.animator.SetBool($"{nameof(Idle)}", false);
+            owner.lastTarget = owner.actualTarget;
         }
 
     }
