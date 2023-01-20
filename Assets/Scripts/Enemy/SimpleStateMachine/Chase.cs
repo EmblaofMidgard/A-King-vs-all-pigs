@@ -13,16 +13,17 @@ public partial class Enemy
         {
             Debug.Log($"{owner.gameObject.name} is {nameof(Chase)} at {Time.time}");
             owner.animator.SetBool($"{nameof(Chase)}", true);
+            owner.actualTarget = owner.playerTarget;
         }
 
         public override void Execute()
         {
             if (owner.playerIsInMeleeRange)
                 owner.machine.SetState(new SimpleAttack(owner));
-            else if(!owner.playerSpotted)
+            else if (!owner.playerSpotted)
                 owner.machine.SetState(new Idle(owner));
             else
-                owner.behaviour.EnemyChase();
+                owner.Move();
         }
 
         public override void Exit()

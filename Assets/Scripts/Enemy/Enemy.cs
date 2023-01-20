@@ -1,39 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public partial class Enemy : MonoBehaviour
 {
     public StateMachine<Enemy> machine;
 
-    public Transform target;
+    public Transform playerTarget;
 
     public float speed = 10;
+    public float reachPoint = 0.5f;
+    public float jumpForce = 5f;
+    public float jumpDistance = 1f;
+
     public float enemyDetectionRange = 1f; //forse non serve
     public float enemyMeleeRange = 1f;
 
     public bool playerPresence { get; private set; }
     public bool playerSpotted => player.isInLight && playerPresence;
-    public bool playerIsInMeleeRange;
+    private bool playerIsInMeleeRange;
 
-    public EnemySimpleBehaviour behaviour;
     public EnemyLight enemyLight;
     public EnemyEye enemyEye;
     public Animator animator;
-    CharacterControllerPlatformer2D player;
-    Vector3 startingPoint;
-    public float reachPoint = 0.5f;
+    public NavMeshAgent agent;
+    public CharacterControllerPlatformer2D player;
 
+    public Transform patrollingPoints;
+    public GameObject enemyMeleeHitbox;
+    public Transform actualTarget;
+    private NavMeshPath path;
+    private float elapsed;
+    private int currentIndex;
+    private bool directionRight;
+
+    private Transform lastTarget;
+    
     // Start is called before the first frame update
     void Start()
     {
         machine = new StateMachine<Enemy>(new Idle(this));
-        startingPoint = transform.position;
         animator = GetComponent<Animator>();
         enemyLight = GetComponent<EnemyLight>();
-        behaviour = GetComponent<EnemySimpleBehaviour>();
         enemyEye = GetComponentInChildren<EnemyEye>();
-        player = target.gameObject.GetComponent<CharacterControllerPlatformer2D>();
+        player = playerTarget.gameObject.GetComponent<CharacterControllerPlatformer2D>();
+        agent = GetComponent<NavMeshAgent>();
+        enemyMeleeHitbox.SetActive(false);
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+        agent.updatePosition = false;
+        currentIndex = 0;
+        directionRight = true;
+        path = new NavMeshPath();
+        elapsed = 0.0f;
     }
 
     // Update is called once per frame
@@ -47,7 +67,7 @@ public partial class Enemy : MonoBehaviour
     {
         if (playerSpotted)
         {
-            if (Vector2.Distance(target.position, transform.position) < enemyMeleeRange)
+            if (Vector2.Distance(playerTarget.position, transform.position) < enemyMeleeRange)
                 playerIsInMeleeRange = true;
             else
                 playerIsInMeleeRange = false;
@@ -67,41 +87,56 @@ public partial class Enemy : MonoBehaviour
         playerPresence = v;
     }
 
-    
+    private void Path()
+    {
+        if (CheckReachPoint())
+        {
+            if (directionRight)
+                currentIndex++;
+            else
+                currentIndex--;
 
+            if (currentIndex == patrollingPoints.childCount - 1)
+                this.directionRight = false;
+            if (currentIndex == 0)
+                this.directionRight = true;
+            currentIndex %= patrollingPoints.childCount;
+            actualTarget = patrollingPoints.GetChild(currentIndex);
+        }
+    }
 
-    //===OLD======================================
-    //public float playerFarMaxDistance;
-    //public float playerCloseMaxDistance;
+    private void Move()
+    {
+        elapsed += Time.deltaTime;
+        if (elapsed > 1.0f)
+        {
+            elapsed -= 1.0f;
+            NavMesh.CalculatePath(transform.position, actualTarget.position, NavMesh.AllAreas, path);
+        }
+        for (int i = 0; i < path.corners.Length - 1; i++)
+            Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);
+        //owner.transform.Translate(path.corners[0] - owner.transform.position * owner.speed * Time.deltaTime);
+        if (path.corners.Length > 1)
+        {
+            Vector3 targetPoint = path.corners[1] - transform.position;
+            if (Mathf.Abs(path.corners[1].y - transform.position.y) > jumpDistance)
+                targetPoint.y += jumpForce;
+            transform.Translate(targetPoint * speed * Time.deltaTime);
+        }
+    }
 
-    //float playerDistance;
+    private bool CheckReachPoint()
+    {
+        if (Mathf.Abs(transform.position.x - actualTarget.position.x) < reachPoint)
+            return true;
+        else
+            return false;
+    }
 
-    //public bool PlayerIsClose()
-    //{
-    //    UpdatePlayerDistance();
-    //    Debug.Log($"{ playerDistance} close");
-    //    return playerDistance < playerCloseMaxDistance;
-    //}
-
-    //public bool PlayerIsFar()
-    //{
-    //    UpdatePlayerDistance();
-    //    Debug.Log($"{ playerDistance} far");
-    //    return playerDistance < playerFarMaxDistance;
-    //}
-
-    //public float GetPlayerDistance()
-    //{
-    //    UpdatePlayerDistance();
-    //    float distance = playerDistance;
-    //    return distance;
-    //}
-
-    //void UpdatePlayerDistance()
-    //{
-    //    playerDistance = Vector2.Distance(transform.position, target.position);
-    //    Debug.Log($"{ playerDistance} calculate");
-    //}
+    public void SetMeleeHitboxState(bool v)
+    {
+        enemyMeleeHitbox.gameObject.SetActive(v);
+    }
 
 }
 

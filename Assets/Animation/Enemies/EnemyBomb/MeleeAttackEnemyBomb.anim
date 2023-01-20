@@ -77,4 +77,18 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.033333335
+    functionName: SetMeleeHitbox(true);
+    data: 
+    objectReferenceParameter: {fileID: 4853499214398799051, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.05
+    functionName: SetMeleeHitbox(false);
+    data: 
+    objectReferenceParameter: {fileID: 4853499214398799051, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
