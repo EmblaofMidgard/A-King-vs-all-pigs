@@ -35643,31 +35643,31 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4157380912685385553, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
+    - target: {fileID: 0}
       propertyPath: path
       value: 
       objectReference: {fileID: 1928661154}
-    - target: {fileID: 4157380912685385553, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
+    - target: {fileID: 0}
       propertyPath: agent
       value: 
       objectReference: {fileID: 1992720682}
-    - target: {fileID: 4157380912685385553, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
+    - target: {fileID: 0}
       propertyPath: circular
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4157380912685385553, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
+    - target: {fileID: 0}
       propertyPath: enemyLight
       value: 
       objectReference: {fileID: 1992720677}
-    - target: {fileID: 4157380912685385553, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
+    - target: {fileID: 0}
       propertyPath: actualTarget
       value: 
       objectReference: {fileID: 2127887962}
-    - target: {fileID: 4157380912685385553, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
+    - target: {fileID: 0}
       propertyPath: enemyMeleeHitbox
       value: 
       objectReference: {fileID: 205918148}
-    - target: {fileID: 4157380912685385553, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
+    - target: {fileID: 0}
       propertyPath: patrollingPoints
       value: 
       objectReference: {fileID: 1928661154}
@@ -35823,8 +35823,7 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.017333984
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4157380912685385553, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
 --- !u!213 &436925147
 Sprite:
@@ -37070,11 +37069,6 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 3
   m_ColliderType: 1
---- !u!1 &1059547919 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4853499214398799051, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
-  m_PrefabInstance: {fileID: 419520941}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1065447256
 GameObject:
   m_ObjectHideFlags: 0
@@ -38302,34 +38296,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8677974180780547782, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
   m_PrefabInstance: {fileID: 419520941}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1059547919}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 290f7fb6da049854c94238b0d8402528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!195 &1992720682
+--- !u!195 &1992720682 stripped
 NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2177917674167679232, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
+  m_PrefabInstance: {fileID: 419520941}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1059547919}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0.5
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &1994911998 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2638203780950914951, guid: f20eb2e77eb75f24180eee4afb6871e3, type: 3}
