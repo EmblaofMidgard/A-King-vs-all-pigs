@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PathDisplay : MonoBehaviour
 {
-    
+    public float dotSize = 0.2f;
+
+
     private void OnDrawGizmos()
     {
         
@@ -13,11 +15,12 @@ public class PathDisplay : MonoBehaviour
             Gizmos.color = Color.green;
             Gizmos.DrawLine(transform.GetChild(i).transform.position, transform.GetChild(i+1).transform.position);
 
-            Gizmos.color = Color.black;
-            Gizmos.DrawWireSphere(transform.GetChild(i).position, 1f);
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.GetChild(i).position, dotSize);
         }
 
-        Gizmos.DrawWireSphere(transform.GetChild(transform.childCount - 1).position,1f);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.GetChild(transform.childCount - 1).position, dotSize);
 
     }
 }
