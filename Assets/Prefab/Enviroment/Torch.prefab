@@ -122,6 +122,9 @@ GameObject:
   - component: {fileID: 4644234750455849429}
   - component: {fileID: 4644234750455849428}
   - component: {fileID: 4644234750455849427}
+  - component: {fileID: 8295786819262382168}
+  - component: {fileID: 6332309628484283008}
+  - component: {fileID: 6343372351484005442}
   m_Layer: 0
   m_Name: Torch
   m_TagString: Untagged
@@ -217,3 +220,59 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8295786819262382168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4644234750455849426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 290f7fb6da049854c94238b0d8402528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightOfTheEnemy: {fileID: 4644234749654929383}
+--- !u!114 &6332309628484283008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4644234750455849426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 031cc6b9249c480428f245adb42848f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InteractionResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8295786819262382168}
+        m_TargetAssemblyTypeName: EnemyLight, Assembly-CSharp
+        m_MethodName: CambiaStatoTorcia
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!58 &6343372351484005442
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4644234750455849426}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.1875

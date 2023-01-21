@@ -35752,12 +35752,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8436067462468523145, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436067462468523145, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
       propertyPath: m_Simulated
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8436067462468523145, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
       propertyPath: m_Constraints
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436067462468523145, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8696784240759148065, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
       propertyPath: m_Size.x

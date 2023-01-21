@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 5787056875261442056}
   - component: {fileID: 4082228740248315084}
   - component: {fileID: 3157893162106480766}
+  - component: {fileID: 1616179740004553833}
+  - component: {fileID: 8811572658374893065}
   m_Layer: 6
   m_Name: EnemyBox
   m_TagString: Untagged
@@ -55,8 +57,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f077cca2a8ac9b46a4356192047a56e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  playerTarget: {fileID: 0}
   speed: 10
+  reachPoint: 0.5
+  jumpForce: 5
+  jumpDistance: 1
+  enemyDetectionRange: 1
+  enemyMeleeRange: 1
+  enemyLight: {fileID: 0}
+  enemyEye: {fileID: 0}
+  animator: {fileID: 0}
+  agent: {fileID: 0}
+  player: {fileID: 0}
+  patrollingPoints: {fileID: 0}
+  enemyMeleeHitbox: {fileID: 0}
+  actualTarget: {fileID: 0}
 --- !u!95 &1704063217034775740
 Animator:
   serializedVersion: 4
@@ -90,7 +105,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightOfTheEnemy: {fileID: 0}
-  lightOnDelay: 0
 --- !u!61 &5787056875261442056
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -190,6 +204,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &1616179740004553833
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129617910000170264}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!58 &8811572658374893065
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129617910000170264}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 4
 --- !u!1 &653911418572337151
 GameObject:
   m_ObjectHideFlags: 0

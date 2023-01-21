@@ -3,60 +3,52 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(CircleCollider2D))]
 public class EnemyLight : MonoBehaviour
 {
     public Transform lightOfTheEnemy;
-    public float lightOnDelay;
 
     Animator animator;
-
-    float time;
 
     public bool lightOn {private set; get;}
 
     public void SpegniTorcia()
     {
-        lightOfTheEnemy.gameObject.SetActive(false);
-        lightOn = false;
+        SetLight(false);
     }
 
     public void AccendiTorcia()
     {
-        lightOfTheEnemy.gameObject.SetActive(true);
-        lightOn = true;
+        SetLight(true);
     }
+
+    private void SetLight(bool v)
+    {
+        lightOfTheEnemy.gameObject.SetActive(v);
+        lightOn = v;
+        if (animator != null)
+            animator.SetBool("luce", lightOn);
+    }
+
+    public void CambiaStatoTorcia()
+    {
+        if (lightOn)
+            SpegniTorcia();
+        else
+            AccendiTorcia();
+    }
+
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         SetTriggerRadius();
-
-        if (!lightOfTheEnemy.gameObject.activeSelf)
-            time = lightOnDelay;
+        AccendiTorcia();
     }
 
     private void SetTriggerRadius()
     {
         GetComponent<CircleCollider2D>().radius = GetComponentInChildren<Light2D>().pointLightOuterRadius;
-    }
-
-    private void Update()
-    {
-
-        if (!lightOn)
-            time = lightOnDelay;
-
-
-        if (time > 0)
-        {
-            time -= Time.deltaTime;
-
-            if (time <= 0)
-                lightOn = true;
-        }
-
-        animator.SetBool("luce", lightOn);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
