@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3647703782436219215}
   - component: {fileID: 5807066035914623047}
   - component: {fileID: 3045302091184897480}
+  - component: {fileID: -439670669364006500}
   m_Layer: 0
   m_Name: SmallHeart
   m_TagString: Untagged
@@ -105,3 +106,11 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!222 &-439670669364006500
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9166303413534740304}
+  m_CullTransparentMesh: 1

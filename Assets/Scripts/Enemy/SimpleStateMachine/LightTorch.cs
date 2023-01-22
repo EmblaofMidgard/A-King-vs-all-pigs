@@ -2,19 +2,17 @@
 
 public partial class Enemy
 {
-    class Idle : IState<Enemy>
+    class LightTorch : IState<Enemy>
     {
-       
-        public Idle(Enemy owner)
+        public LightTorch(Enemy owner)
         {
             this.owner = owner;
         }
 
         public override void Enter()
         {
-            Debug.Log($"{owner.gameObject.name} is {nameof(Idle)} at {Time.time}");
-            owner.animator.SetBool($"{nameof(Idle)}", true);
-            owner.elapsed = 0f;
+            Debug.Log($"{owner.gameObject.name} is {nameof(LightTorch)} at {Time.time}");
+            owner.animator.SetBool($"{nameof(LightTorch)}", true);
         }
 
         public override void Execute()
@@ -28,18 +26,17 @@ public partial class Enemy
             }
             else
             {
-                if (owner.elapsed > owner.idleDuration)
-                    owner.machine.SetState(new Patrol(owner));
+                if (!owner.enemyLight.lightOn)
+                    owner.enemyLight.AccendiTorcia();
                 else
-                    owner.elapsed += Time.deltaTime;
+                    owner.machine.SetState(new Idle(owner));
             }
                 
         }
 
         public override void Exit()
         {
-            owner.animator.SetBool($"{nameof(Idle)}", false);
-            owner.elapsed = 0f;
+            owner.animator.SetBool($"{nameof(LightTorch)}", false);
         }
 
     }

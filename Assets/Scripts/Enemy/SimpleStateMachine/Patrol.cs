@@ -2,19 +2,19 @@
 
 public partial class Enemy
 {
-    class Idle : IState<Enemy>
+    class Patrol : IState<Enemy>
     {
-       
-        public Idle(Enemy owner)
+        public Patrol(Enemy owner)
         {
             this.owner = owner;
         }
 
         public override void Enter()
         {
-            Debug.Log($"{owner.gameObject.name} is {nameof(Idle)} at {Time.time}");
-            owner.animator.SetBool($"{nameof(Idle)}", true);
-            owner.elapsed = 0f;
+            Debug.Log($"{owner.gameObject.name} is {nameof(Patrol)} at {Time.time}");
+            owner.animator.SetBool($"{nameof(Patrol)}", true);
+            if(owner.lastTarget != null)
+                owner.actualTarget = owner.lastTarget;
         }
 
         public override void Execute()
@@ -28,18 +28,18 @@ public partial class Enemy
             }
             else
             {
-                if (owner.elapsed > owner.idleDuration)
-                    owner.machine.SetState(new Patrol(owner));
-                else
-                    owner.elapsed += Time.deltaTime;
+                owner.Path();
+                owner.Move();
+                //if (!owner.enemyLight.lightOn)
+                //    owner.enemyLight.AccendiTorcia();
             }
                 
         }
 
         public override void Exit()
         {
-            owner.animator.SetBool($"{nameof(Idle)}", false);
-            owner.elapsed = 0f;
+            owner.animator.SetBool($"{nameof(Patrol)}", false);
+            owner.lastTarget = owner.actualTarget;
         }
 
     }

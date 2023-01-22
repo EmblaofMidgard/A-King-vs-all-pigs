@@ -5,8 +5,8 @@ public partial class Enemy
 {
     class SimpleAttack : IState<Enemy>
     {
-        private float activeTime = 2f;
-        private float unactiveTime = 3f;
+        private float activeTime = 0.5f;
+        private float unactiveTime = 0.75f;
         private float elapsed;
         private bool isActive;
 
@@ -18,7 +18,7 @@ public partial class Enemy
         public override void Enter()
         {
             Debug.Log($"{owner.gameObject.name} is {nameof(SimpleAttack)} at {Time.time}");
-            owner.animator.SetBool($"{nameof(SimpleAttack)}", true);
+            owner.animator.SetTrigger($"{nameof(SimpleAttack)}");
             isActive = false;
             elapsed = 0f;
         }
@@ -58,7 +58,6 @@ public partial class Enemy
 
         public override void Exit()
         {
-            owner.animator.SetBool($"{nameof(SimpleAttack)}", false);
             owner.SetMeleeHitboxState(false);
         }
 
