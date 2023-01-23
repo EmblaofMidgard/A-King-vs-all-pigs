@@ -35643,6 +35643,10 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 2.02
       objectReference: {fileID: 0}
+    - target: {fileID: 997290804037051839, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.38620377
+      objectReference: {fileID: 0}
     - target: {fileID: 2177917674167679232, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
       propertyPath: m_Height
       value: 0.2
@@ -35653,7 +35657,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4853499214398799051, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
       propertyPath: m_Name
-      value: EnemyCannon
+      value: EnemyBase
       objectReference: {fileID: 0}
     - target: {fileID: 5460554481488474770, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
       propertyPath: m_Offset.x
@@ -35665,11 +35669,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6036316575067490280, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.087
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6036316575067490280, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.091
+      value: -0.881
       objectReference: {fileID: 0}
     - target: {fileID: 6036316575067490280, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
       propertyPath: m_LocalPosition.z
@@ -35702,6 +35706,10 @@ PrefabInstance:
     - target: {fileID: 6036316575067490280, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6426157144096578122, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.221
       objectReference: {fileID: 0}
     - target: {fileID: 7155422298655278317, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
       propertyPath: player
@@ -35770,6 +35778,14 @@ PrefabInstance:
     - target: {fileID: 8436067462468523145, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
       propertyPath: m_UseAutoMass
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8696784240759148065, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
+      propertyPath: m_Size.y
+      value: 0.65179324
+      objectReference: {fileID: 0}
+    - target: {fileID: 8696784240759148065, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.036380947
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b863a644fee5f7648b21bcb9e1a64532, type: 3}

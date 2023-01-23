@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 33a052c3bb1e95642931cfc51f6f039c
+guid: 0541c3ce3c3a58b4eaa1c22d0177f14b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hit (34x28)_0
+      name: WalkTorch_0
       rect:
         serializedVersion: 2
         x: 0
@@ -113,20 +113,20 @@ TextureImporter:
         width: 34
         height: 28
       alignment: 9
-      pivot: {x: 0.61764705, y: 0.14285715}
+      pivot: {x: 0.5882353, y: 0.14285715}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b69721122360c0a48b6c759fe3222d64
-      internalID: -1633531981
+      spriteID: 1137423fb92730149ba8a9fa23b954e9
+      internalID: -622022407
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hit (34x28)_1
+      name: WalkTorch_1
       rect:
         serializedVersion: 2
         x: 34
@@ -134,14 +134,98 @@ TextureImporter:
         width: 34
         height: 28
       alignment: 9
-      pivot: {x: 0.61764705, y: 0.14285715}
+      pivot: {x: 0.5882353, y: 0.14285715}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcbf1b9832559a743abbb40d775c8db1
-      internalID: 1410533530
+      spriteID: c1e1915dd7463fb4ca6233b100c40922
+      internalID: -124939587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkTorch_2
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 0
+        width: 34
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5882353, y: 0.14285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0837a6a36b2c2c45b5957ba39cc3b0e
+      internalID: 652510727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkTorch_3
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 0
+        width: 34
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5882353, y: 0.14285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67668145841bcec49bb1dc55a3ca1237
+      internalID: 1247128929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkTorch_4
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 0
+        width: 34
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5882353, y: 0.14285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3009b09f50c6a2428fe0c2ad32451f3
+      internalID: 1231106572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkTorch_5
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 0
+        width: 34
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5882353, y: 0.14285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6a8f651674a5224aaf91525115c995f
+      internalID: 105783379
       vertices: []
       indices: 
       edges: []
@@ -157,8 +241,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Hit (34x28)_0: -1633531981
-      Hit (34x28)_1: 1410533530
+      WalkTorch_1: -124939587
+      WalkTorch_4: 1231106572
+      WalkTorch_2: 652510727
+      WalkTorch_0: -622022407
+      WalkTorch_5: 105783379
+      WalkTorch_3: 1247128929
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
