@@ -18,4 +18,9 @@ public class Damager : MonoBehaviour
             collision.gameObject.GetComponent<Damageable>().TakeDamage(damageDone);
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        return;
+    }
+
 }

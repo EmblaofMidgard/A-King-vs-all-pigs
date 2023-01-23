@@ -4,6 +4,9 @@ public partial class Enemy
 {
     class LightTorch : IState<Enemy>
     {
+        float delayLight = 2f;
+        float elapsed;
+        
         public LightTorch(Enemy owner)
         {
             this.owner = owner;
@@ -12,7 +15,9 @@ public partial class Enemy
         public override void Enter()
         {
             Debug.Log($"{owner.gameObject.name} is {nameof(LightTorch)} at {Time.time}");
-            owner.animator.SetBool($"{nameof(LightTorch)}", true);
+            owner.animator.SetTrigger($"{nameof(LightTorch)}");
+            elapsed = 0f;
+            owner.isInLightTorch = true;
         }
 
         public override void Execute()
@@ -27,7 +32,12 @@ public partial class Enemy
             else
             {
                 if (!owner.enemyLight.lightOn)
-                    owner.enemyLight.AccendiTorcia();
+                {
+                    if (elapsed > delayLight)
+                        owner.enemyLight.AccendiTorcia();
+                    else
+                        elapsed += Time.deltaTime;
+                }
                 else
                     owner.machine.SetState(new Idle(owner));
             }
@@ -36,7 +46,8 @@ public partial class Enemy
 
         public override void Exit()
         {
-            owner.animator.SetBool($"{nameof(LightTorch)}", false);
+            
+            owner.isInLightTorch = false;
         }
 
     }

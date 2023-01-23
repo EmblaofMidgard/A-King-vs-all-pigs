@@ -9,6 +9,7 @@ public partial class Enemy
         private float unactiveTime = 0.75f;
         private float elapsed;
         private bool isActive;
+        private Vector3 startPosition;
 
         public SimpleAttack(Enemy owner)
         {
@@ -21,6 +22,7 @@ public partial class Enemy
             owner.animator.SetTrigger($"{nameof(SimpleAttack)}");
             isActive = false;
             elapsed = 0f;
+            startPosition = owner.enemyMeleeHitbox.transform.localPosition;
         }
 
         public override void Execute()
@@ -42,7 +44,9 @@ public partial class Enemy
                     owner.SetMeleeHitboxState(false);
                     elapsed = 0f;
                     isActive = false;
+                    
                 }
+                owner.enemyMeleeHitbox.transform.localPosition = new Vector3(owner.enemyMeleeHitbox.transform.localPosition.x, owner.enemyMeleeHitbox.transform.localPosition.y + 0.001f, owner.enemyMeleeHitbox.transform.localPosition.z);
             }
             else
             {
@@ -51,6 +55,7 @@ public partial class Enemy
                     owner.SetMeleeHitboxState(true);
                     elapsed = 0f;
                     isActive = true;
+                    owner.enemyMeleeHitbox.transform.localPosition = startPosition;
                 }
             }
             elapsed += Time.deltaTime;
@@ -59,6 +64,7 @@ public partial class Enemy
         public override void Exit()
         {
             owner.SetMeleeHitboxState(false);
+            owner.enemyMeleeHitbox.transform.localPosition = startPosition;
         }
 
     }

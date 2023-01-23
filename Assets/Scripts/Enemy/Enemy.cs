@@ -24,7 +24,7 @@ public partial class Enemy : MonoBehaviour
 
     public bool playerPresence { get; private set; }
     public bool playerSpotted => player.isInLight && playerPresence;
-    private bool playerIsInMeleeRange;
+    public bool playerIsInMeleeRange { get; private set; }
 
     public EnemyLight enemyLight;
     public EnemyEye enemyEye;
@@ -41,6 +41,7 @@ public partial class Enemy : MonoBehaviour
     private bool directionRight;
     private bool nearToWall;
     private bool isDead;
+    private bool isInLightTorch;
 
     private Transform lastTarget;
     
@@ -62,6 +63,7 @@ public partial class Enemy : MonoBehaviour
         path = new NavMeshPath();
         elapsed = 0.0f;
         nearToWall = false;
+        isInLightTorch = false;
         SetIsDead(false);
     }
 
@@ -75,7 +77,7 @@ public partial class Enemy : MonoBehaviour
 
     private void CheckTorchStatus()
     {
-        if (!enemyLight.lightOn && !playerSpotted)
+        if (!enemyLight.lightOn && !playerSpotted && !isInLightTorch)
             machine.SetState(new LightTorch(this));
     }
 
@@ -151,8 +153,9 @@ public partial class Enemy : MonoBehaviour
         Vector2 newTarget = targetPoint;
         if (nearToWall)
         {
-            if (Mathf.Abs(path.corners[1].y - transform.position.y) > jumpDistance)
-                newTarget.y += jumpForce;
+            float distance = Mathf.Abs(path.corners[1].y - transform.position.y);
+            if ( distance > jumpDistance)
+                newTarget.y += jumpForce * (distance > 1 ? distance : 1);
         }
         return newTarget;
     }

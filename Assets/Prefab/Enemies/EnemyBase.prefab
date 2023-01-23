@@ -169,7 +169,7 @@ MonoBehaviour:
   speed: 0.5
   reachPoint: 0.5
   jumpForce: 100
-  jumpDistance: 1
+  jumpDistance: 0.75
   overlapRange: 0.2
   wallMask:
     serializedVersion: 2
@@ -215,10 +215,10 @@ MonoBehaviour:
   InteractionResponse:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 290f7fb6da049854c94238b0d8402528, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
-        m_MethodName: set_name
-        m_Mode: 5
+      - m_Target: {fileID: 8677974180780547782}
+        m_TargetAssemblyTypeName: EnemyLight, Assembly-CSharp
+        m_MethodName: SpegniTorcia
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -584,7 +584,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8237054260089436252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.45, y: 0, z: 0}
+  m_LocalPosition: {x: -0.6, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -618,7 +618,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.44968414, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -629,5 +629,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.2993693, y: 1}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0

@@ -7,7 +7,7 @@ using UnityEngine.Rendering.Universal;
 public class EnemyLight : MonoBehaviour
 {
     public Transform lightOfTheEnemy;
-
+    CharacterControllerPlatformer2D player;
     Animator animator;
 
     public bool lightOn {private set; get;}
@@ -15,11 +15,15 @@ public class EnemyLight : MonoBehaviour
     public void SpegniTorcia()
     {
         SetLight(false);
+        if (player != null)
+            player.SetIsInLight(false);
     }
 
     public void AccendiTorcia()
     {
         SetLight(true);
+        if (player != null)
+            player.SetIsInLight(true);
     }
 
     private void SetLight(bool v)
@@ -54,13 +58,25 @@ public class EnemyLight : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<CharacterControllerPlatformer2D>() == true && lightOn)
-            collision.gameObject.GetComponent<CharacterControllerPlatformer2D>().SetIsInLight(true);
+        {
+            player = collision.gameObject.GetComponent<CharacterControllerPlatformer2D>();
+            player.SetIsInLight(true);
+        }
+           
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<CharacterControllerPlatformer2D>() == true)
+        {
+            if (GetComponent<Enemy>())
+                if (GetComponent<Enemy>().playerIsInMeleeRange)
+                    return;
+
             collision.gameObject.GetComponent<CharacterControllerPlatformer2D>().SetIsInLight(false);
+            player = null;
+        }
+            
 
     }
 
