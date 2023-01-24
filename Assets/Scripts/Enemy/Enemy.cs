@@ -39,7 +39,7 @@ public partial class Enemy : MonoBehaviour
     private float elapsed;
     private int currentIndex;
     private bool directionRight;
-    private bool nearToWall;
+    private bool nearToWall = false;
     private bool isDead;
     private bool isInLightTorch;
 
@@ -151,7 +151,7 @@ public partial class Enemy : MonoBehaviour
     private Vector2 CalculateVerticalMove(Vector2 targetPoint)
     {
         Vector2 newTarget = targetPoint;
-        if (nearToWall)
+        if (nearToWall && path.corners.Length > 1)
         {
             float distance = Mathf.Abs(path.corners[1].y - transform.position.y);
             if ( distance > jumpDistance)
