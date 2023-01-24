@@ -60558,6 +60558,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1195347852}
   - component: {fileID: 1195347851}
+  - component: {fileID: 1195347853}
   m_Layer: 0
   m_Name: Walls
   m_TagString: Untagged
@@ -60594,6 +60595,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1195347853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195347850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1287863948
 GameObject:
   m_ObjectHideFlags: 0
@@ -60608,6 +60625,7 @@ GameObject:
   - component: {fileID: 1287863950}
   - component: {fileID: 1287863954}
   - component: {fileID: 1287863953}
+  - component: {fileID: 1287863955}
   m_Layer: 0
   m_Name: Tilemap
   m_TagString: Untagged
@@ -88052,7 +88070,7 @@ CompositeCollider2D:
   m_GameObject: {fileID: 1287863948}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: cad3d7231f991f242b65808ff4b410f8, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -88598,6 +88616,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1287863955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287863948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1001 &1363637257
 PrefabInstance:
   m_ObjectHideFlags: 0
