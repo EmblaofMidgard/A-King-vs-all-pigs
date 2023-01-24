@@ -54,14 +54,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void AddOneDiamond(Collector collector)
-    {
-        AddOneDiamond();
-    }
-
-
     public void ModifyHearts(Damageable damageable)
     {
         SetHeartsNumber(damageable.actualHealtPoint);
+    }
+
+    public void CollectItem(Collectible collectible)
+    {
+        if (collectible.collectibleType == ECollectibleType.Diamond)
+            AddOneDiamond();
     }
 }

@@ -1069,6 +1069,14 @@ PrefabInstance:
       propertyPath: onHeal.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7653188440368151535, guid: 09b14eee1961c714cb1d1950080654ca, type: 3}
+      propertyPath: uiManager
+      value: 
+      objectReference: {fileID: 455247451}
+    - target: {fileID: 7653188440368151535, guid: 09b14eee1961c714cb1d1950080654ca, type: 3}
+      propertyPath: OnCollect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 455247451}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09b14eee1961c714cb1d1950080654ca, type: 3}
 --- !u!114 &377117768 stripped

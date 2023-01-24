@@ -56214,6 +56214,18 @@ PrefabInstance:
       propertyPath: onHeal.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7653188440368151535, guid: 09b14eee1961c714cb1d1950080654ca, type: 3}
+      propertyPath: uiManager
+      value: 
+      objectReference: {fileID: 638511960}
+    - target: {fileID: 7653188440368151535, guid: 09b14eee1961c714cb1d1950080654ca, type: 3}
+      propertyPath: OnCollect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 638511960}
+    - target: {fileID: 7653188440368151535, guid: 09b14eee1961c714cb1d1950080654ca, type: 3}
+      propertyPath: OnCollect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CollectItem
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09b14eee1961c714cb1d1950080654ca, type: 3}
 --- !u!1001 &196349673
@@ -89668,7 +89680,7 @@ MonoBehaviour:
   m_VoxelSize: 0.016666668
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: f475be8018369d2489d49607bb549d8b, type: 2}
 --- !u!114 &1724646672
 MonoBehaviour:
   m_ObjectHideFlags: 0
